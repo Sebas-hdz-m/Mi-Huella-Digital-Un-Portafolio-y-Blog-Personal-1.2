@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Huella Digital: Un Portafolio y Blog Personal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /*
+        -------------------------------------------------------------
+        BLOQUE DE ESTILOS CSS - Módulos 3 y 5
+        Contiene estilos globales, selectores específicos, modelo de caja,
+        Flexbox, efectos visuales y tipografía.
+        -------------------------------------------------------------
+      */
+
+      /* Estilos Globales para el body */
+      html {
+        scroll-padding-top: 8rem; /* Ajusta este valor si el encabezado cambia de tamaño. Se usa para asegurar que al hacer clic en un enlace de anclaje, el contenido no quede oculto bajo el header fijo. */
+      }
+      body {
+        /* Define la fuente principal para todo el cuerpo del documento, con Lato como fuente preferida. Esto asegura consistencia tipográfica. */
+        font-family: "Lato", sans-serif;
+        /* Establece un color de fondo base para la página, creando una apariencia consistente y profesional. */
+        background-color: #f7f9f9; /* Un gris muy claro, casi blanco */
+        /* Define el color de texto por defecto para el body. Ayuda a la legibilidad general. */
+        color: #343a40; /* Gris oscuro para el texto */
+        /* Previene el desplazamiento horizontal, útil para diseños responsivos y evitar barras de scroll inesperadas. */
+        overflow-x: hidden;
+        /* Habilita el desplazamiento suave para los enlaces de anclaje, como se solicita en el Requisito HTML. Esto mejora la experiencia de usuario. */
+        scroll-behavior: smooth;
+      }
+
+      /* Estilos para el encabezado principal del sitio */
+      .main-header {
+        /* Color de fondo oscuro para el encabezado, contrastando con el fondo del body. */
+        background-color: #2c3e50; /* Azul oscuro, tono profesional */
+        /* Padding vertical para dar espacio al contenido del encabezado, mejorando la estética. */
+        padding: 1.5rem 0;
+        /* Usa Flexbox para centrar y organizar el contenido del encabezado, permitiendo un diseño flexible y responsivo. */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Asegura que el header sea "sticky" y permanezca en la parte superior al hacer scroll, un requisito clave de navegación. */
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Asegura que el header esté por encima de otros elementos al desplazarse, manteniendo la navegación siempre visible. */
+        /* Aplica una ligera sombra para dar profundidad al header, un efecto visual sutil. */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Estilos para el título principal (h1) dentro del header */
+      .main-header h1 {
+        /* Color del texto blanco para el título principal, creando contraste con el fondo oscuro del header. */
+        color: white;
+        /* Tamaño de fuente más grande para el título, usando la fuente Montserrat para un estilo profesional y llamativo. */
+        font-size: 2.5rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700; /* Negrita para mayor énfasis */
+        /* Margen inferior para separar el título de la navegación. */
+        margin-bottom: 1rem;
+      }
+
+      /* Estilos para la barra de navegación */
+      nav ul {
+        /* Usa Flexbox para alinear los elementos de navegación horizontalmente, facilitando la organización del menú. */
+        display: flex;
+        /* Elimina los marcadores de lista por defecto. */
+        list-style: none;
+        /* Elimina el padding y margen por defecto de la lista para un control completo del espaciado. */
+        padding: 0;
+        margin: 0;
+        /* Permite que los elementos se envuelvan en pantallas pequeñas, asegurando la responsividad del menú. */
+        flex-wrap: wrap;
+        /* Centra los elementos del menú horizontalmente. */
+        justify-content: center;
+      }
+
+      /* Estilos para cada elemento de la lista de navegación */
+      nav ul li a {
+        /* Color de los enlaces en blanco para contrastar con el fondo oscuro del nav, mejorando la visibilidad. */
+        color: white;
+        /* Elimina el subrayado por defecto de los enlaces, dándoles una apariencia más limpia. */
+        text-decoration: none;
+        /* Añade padding alrededor del texto del enlace para un área de clic más grande y una mejor estética. */
+        padding: 0.75rem 1.25rem;
+        /* Hace que el enlace se comporte como un bloque para que el padding y la transición funcionen correctamente, creando botones interactivos. */
+        display: block;
+        /* Redondea ligeramente los bordes de los enlaces para un diseño más suave. */
+        border-radius: 0.375rem; /* 6px */
+        /* Aplica una transición suave para los efectos hover, mejorando la interactividad visual. */
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+        /* Cambia el peso de la fuente para los enlaces de navegación, destacándolos. */
+        font-weight: 600;
+      }
+
+      /* Efecto hover para los enlaces de navegación */
+      nav ul li a:hover {
+        /* Cambia el color de fondo al pasar el mouse, proporcionando retroalimentación visual al usuario. */
+        background-color: #39526d; /* Un gris azulado oscuro, más profesional */
+        /* Ligeramente levanta el botón al pasar el cursor para un efecto interactivo y dinámico. */
+        transform: translateY(-2px);
+      }
+
+      /* Clase para el área de contenido principal */
+      .main-content-wrapper {
+        /* Color de fondo blanco para el área de contenido principal, separándola del fondo general del body y dándole un aspecto de "hoja". */
+        background-color: #ffffff;
+        /* Añade padding superior e inferior para el espaciado interno del contenido. */
+        padding: 2rem 0;
+        /* Aplica un borde redondeado y sombra para que el contenedor principal parezca una "hoja" flotante. */
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        /* Margen para centrar el contenedor y darle espacio alrededor en la página. */
+        margin: 2rem auto;
+        /* Limita el ancho máximo para una mejor legibilidad en pantallas grandes, evitando líneas de texto demasiado largas. */
+        max-width: 1200px;
+        /* Padding lateral para asegurar que el contenido no toque los bordes en pantallas pequeñas, mejorando la lectura. */
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      /* Estilos para cada sección principal de la página */
+      section {
+        /* Padding interno para dar espacio al contenido dentro de cada sección, mejorando la legibilidad y el "aire". */
+        padding: 3rem 1.5rem; /* 48px arriba/abajo, 24px a los lados */
+        /* Margen inferior para separar las secciones entre sí de manera clara. */
+        margin-bottom: 3rem; /* 48px */
+        /* Alinea el texto a la izquierda por defecto. */
+        text-align: left;
+        /* Añade una sombra sutil a las secciones para darles profundidad y un aspecto de tarjeta flotante. */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        /* Bordes ligeramente redondeados para un diseño suave. */
+        border-radius: 8px;
+        /* Color de fondo ligeramente diferente para algunas secciones para romper la monotonía o simplemente un blanco limpio. */
+        background-color: #ffffff;
+      }
+
+      /* Modificación específica para el fondo de la sección de Inicio con un linear-gradient (Efectos Visuales) */
+      #inicio {
+        /* Aplica un degradado lineal como fondo, desde un azul claro a un verde agua, creando un efecto visual atractivo. */
+        background: linear-gradient(
+          135deg,
+          #ebf5fb 0%,
+          #d6eaf8 100%
+        ); /* Tonos azules más sutiles */
+        /* Centra el texto de la sección de inicio para un diseño armonioso. */
+        text-align: center;
+        /* Añade un padding extra para esta sección, dándole más espacio y destacándola. */
+        padding: 4rem 1.5rem;
+      }
+
+      /* Estilos para los títulos de sección (h2) */
+      .section-title {
+        /* Tamaño de fuente más grande para los títulos de sección, usando Montserrat para consistencia y estilo. */
+        font-size: 2.2rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        /* Color más oscuro para los títulos, creando contraste. */
+        color: #2c3e50;
+        /* Margen inferior para separar el título del contenido siguiente. */
+        margin-bottom: 2rem;
+        /* Borde inferior para un efecto visual de separación y énfasis. */
+        border-bottom: 3px solid #4a90e2; /* Azul acentuado */
+        /* Padding inferior para separar el texto del borde. */
+        padding-bottom: 1rem;
+        /* Centra el texto del título. */
+        text-align: center;
+      }
+
+      /* Estilos para los párrafos dentro de las secciones */
+      section p {
+        /* Altura de línea mejorada para legibilidad, haciendo el texto más fácil de leer. */
+        line-height: 1.8;
+        /* Espaciado de párrafo, usando margin-bottom. */
+        margin-bottom: 1rem;
+        /* Color de texto más claro para el cuerpo, pero aún legible. */
+        color: #555;
+        /* Tamaño de fuente ligeramente aumentado para mejor legibilidad. */
+        font-size: 1.05rem;
+      }
+
+      /* Estilos para los botones generales en el sitio (Botones Modernos) */
+      .btn-primary {
+        /* Color de fondo azul vibrante para los botones, atrayendo la atención. */
+        background-color: #4a90e2; /* Azul profesional */
+        /* Color del texto blanco para alto contraste. */
+        color: white;
+        /* Elimina el borde por defecto. */
+        border: none;
+        /* Padding para el tamaño del botón, creando un área de clic cómoda. */
+        padding: 1rem 2rem;
+        /* Bordes redondeados para un diseño suave. */
+        border-radius: 5px;
+        /* Cambia el cursor para indicar que es clickeable. */
+        cursor: pointer;
+        /* Efecto de sombra para profundidad, un efecto visual sutil. */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Transición suave para los efectos hover, mejorando la interactividad. */
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+        /* Fuente negrita para el texto del botón. */
+        font-weight: 600;
+        /* Tamaño de fuente del botón. */
+        font-size: 1.1rem;
+        /* Display inline-block para que el padding y margen funcionen correctamente sin ocupar todo el ancho, y para que los botones puedan estar en la misma línea. */
+        text-decoration: none; /* Elimina el subrayado en caso de ser un enlace */
+      }
+
+      /* Efecto hover para los botones primarios */
+      .btn-primary:hover {
+        /* Cambia el color de fondo al pasar el mouse, proporcionando retroalimentación. */
+        background-color: #3a7ecb; /* Azul más oscuro */
+        /* Ligeramente levanta el botón al pasar el cursor para un efecto interactivo. */
+        transform: translateY(-2px);
+      }
+
+      /* Nueva clase para agrupar los botones de la sección de inicio */
+      .inicio-buttons {
+        /* Usa Flexbox para organizar los botones horizontalmente. */
+        display: flex;
+        /* Centra los botones dentro del contenedor. */
+        justify-content: center;
+        /* Espacio entre los botones. */
+        gap: 1rem;
+        /* Margen superior para separarlos del texto o imagen. */
+        margin-top: 1.5rem;
+        /* Permite que los botones se envuelvan en pantallas pequeñas, asegurando la responsividad. */
+        flex-wrap: wrap;
+      }
+
+      /* Estilo para el contenedor de la imagen de bienvenida */
+      #welcomeImageContainer {
+        margin-top: 2rem; /* Espacio entre el contenido y la imagen */
+      }
+      #welcomeImageContainer img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: block; /* Para que margin: auto funcione */
+        margin: 0 auto; /* Centrar la imagen */
+      }
+
+      /* Estilos para la cuadrícula de la sección de Portafolio/Galería usando Flexbox (Diseño con Flexbox) */
+      .portfolio-grid {
+        /* Usa Flexbox para crear una cuadrícula flexible, permitiendo la organización dinámica de los ítems. */
+        display: flex;
+        /* Permite que los elementos se envuelvan a la siguiente línea si no hay espacio, clave para la responsividad. */
+        flex-wrap: wrap;
+        /* Centra los elementos horizontalmente si no llenan una fila completa. */
+        justify-content: center;
+        /* Espacio entre las tarjetas, creando un "gap" visual. */
+        gap: 1.5rem; /* 24px */
+        /* Margen superior para separar de otros elementos. */
+        margin-top: 2rem;
+      }
+
+      /* Estilos para cada "tarjeta" o ítem del portafolio/galería */
+      .portfolio-item {
+        /* Ocupa aproximadamente un tercio del ancho disponible, con un tamaño mínimo para responsividad. Calcula el ancho para 3 columnas menos el gap. */
+        flex: 1 1 calc(33% - 1.5rem); /* 33% menos el gap para 3 columnas */
+        /* Ancho máximo para evitar que las tarjetas se estiren demasiado en pantallas grandes, manteniendo una buena estética. */
+        max-width: 350px;
+        /* Color de fondo blanco para la tarjeta. */
+        background-color: white;
+        /* Bordes redondeados. */
+        border-radius: 10px;
+        /* Sombra para dar profundidad (Efectos Visuales). */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        /* Oculta cualquier contenido que se desborde, útil para imágenes que excedan el tamaño. */
+        overflow: hidden;
+        /* Transición para efectos de hover, suavizando los cambios visuales. */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Alinear texto al centro dentro de la tarjeta. */
+        text-align: center;
+        /* Padding interno en la parte inferior. */
+        padding-bottom: 1rem;
+      }
+
+      /* Efecto hover para las tarjetas del portafolio */
+      .portfolio-item:hover {
+        /* Ligeramente levanta y agranda la sombra al pasar el cursor, dando una sensación de interactividad. */
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Estilos para las imágenes dentro de las tarjetas del portafolio */
+      .portfolio-item img {
+        /* La imagen ocupa todo el ancho de la tarjeta. */
+        width: 100%;
+        /* Altura fija para que todas las imágenes tengan un tamaño uniforme en la cuadrícula. */
+        height: 220px;
+        /* Asegura que la imagen cubra el área sin distorsionarse, recortando si es necesario. */
+        object-fit: cover;
+        /* Margen inferior para separar la imagen del texto. */
+        margin-bottom: 1rem;
+      }
+
+      /* Estilos para el título de la tarjeta del portafolio */
+      .portfolio-item h4 {
+        /* Tamaño de fuente para el título de la tarjeta. */
+        font-size: 1.4rem;
+        /* Fuente Montserrat para los títulos, manteniendo la consistencia tipográfica. */
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Margen inferior. */
+        margin-bottom: 0.5rem;
+        /* Color del texto. */
+        color: #333;
+        /* Padding lateral para el texto del título, evitando que toque los bordes. */
+        padding: 0 1rem;
+      }
+
+      /* Estilos para la descripción de la tarjeta del portafolio */
+      .portfolio-item p {
+        /* Tamaño de fuente para la descripción. */
+        font-size: 1rem;
+        /* Color del texto. */
+        color: #666;
+        /* Padding lateral. */
+        padding: 0 1rem;
+      }
+
+      /* Estilos para el botón "Ver Proyecto" dentro de las tarjetas */
+      .portfolio-item .btn-secondary {
+        /* Estilos básicos para un botón secundario, con un color gris para diferenciarlo del primario. */
+        background-color: #6c757d; /* Gris */
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Transición suave para el hover */
+        text-decoration: none;
+        display: inline-block;
+        /* Tamaño de fuente aumentado */
+        font-size: 1rem;
+        margin-top: 1rem; /* Margen superior para separarlo del texto. */
+      }
+
+      /* Efecto hover para el botón secundario */
+      .portfolio-item .btn-secondary:hover {
+        background-color: #5a6268; /* Gris más oscuro */
+      }
+
+      /* Estilos para el pie de página */
+      footer {
+        /* Color de fondo oscuro, igual que el header, para consistencia visual en todo el sitio. */
+        background-color: #2c3e50;
+        /* Color de texto blanco para contrastar con el fondo oscuro. */
+        color: white;
+        /* Padding interno para dar espacio al contenido del footer. */
+        padding: 1.5rem 0;
+        /* Alinea el texto al centro. */
+        text-align: center;
+        /* Margen superior para separar del último contenido. */
+        margin-top: 3rem;
+      }
+
+      /* Estilos para los enlaces de redes sociales en el footer */
+      .social-links a {
+        /* Color de los iconos. */
+        color: white;
+        /* Tamaño de fuente de los iconos. */
+        font-size: 1.8rem;
+        /* Margen entre los iconos. */
+        margin: 0 0.8rem;
+        /* Transición suave para el efecto hover, mejorando la interactividad. */
+        transition: color 0.3s ease, transform 0.2s ease;
+        /* Alineación vertical para asegurar que los iconos estén bien centrados. */
+        vertical-align: middle;
+      }
+
+      /* Efecto hover para los iconos de redes sociales */
+      .social-links a:hover {
+        /* Cambia el color al pasar el mouse. */
+        color: #4a90e2; /* Azul acentuado */
+        /* Ligeramente agranda el icono, un efecto interactivo. */
+        transform: scale(1.1);
+      }
+
+      /* Estilos para el formulario de contacto */
+      #contacto form {
+        /* Usa Flexbox para organizar los elementos del formulario en una columna, facilitando su apilamiento. */
+        display: flex;
+        flex-direction: column;
+        /* Espacio entre los elementos del formulario. */
+        gap: 1.25rem; /* 20px */
+        /* Ancho máximo para el formulario, manteniendo una buena legibilidad. */
+        max-width: 600px;
+        /* Centra el formulario en la página. */
+        margin: 0 auto;
+        /* Padding y sombra para que el formulario se vea como una tarjeta, un efecto visual atractivo. */
+        padding: 2rem;
+        background-color: #fefefe;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Estilos para las etiquetas del formulario */
+      #contacto label {
+        /* Fuente negrita para las etiquetas, haciéndolas más legibles. */
+        font-weight: 600;
+        /* Margen inferior para separar la etiqueta del input. */
+        margin-bottom: 0.25rem;
+        /* Color del texto de la etiqueta. */
+        color: #495057;
+      }
+
+      /* Estilos para los placeholders de los campos de entrada */
+      #contacto input::placeholder,
+      #contacto textarea::placeholder {
+        color: #aaa; /* Color grisáceo para el placeholder */
+        font-style: italic; /* Estilo itálico para el placeholder */
+      }
+
+      #contacto input::-webkit-input-placeholder,
+      #contacto textarea::-webkit-input-placeholder {
+        color: #aaa;
+        font-style: italic;
+      }
+
+      #contacto input::-moz-placeholder,
+      #contacto textarea::-moz-placeholder {
+        color: #aaa;
+        font-style: italic;
+      }
+
+      #contacto input:-ms-input-placeholder,
+      #contacto textarea:-ms-input-placeholder {
+        color: #aaa;
+        font-style: italic;
+      }
+
+      #contacto input:-moz-placeholder,
+      #contacto textarea:-moz-placeholder {
+        color: #aaa;
+        font-style: italic;
+      }
+
+      /* Estilos para los campos de entrada de texto y textarea del formulario */
+      #contacto input,
+      #contacto textarea {
+        /* Ancho completo, asegurando que ocupen el espacio disponible. */
+        width: 100%;
+        /* Padding interno para los campos de entrada. */
+        padding: 0.8rem;
+        /* Borde. */
+        border: 1px solid #ced4da;
+        /* Bordes redondeados. */
+        border-radius: 5px;
+        /* Tamaño de fuente aumentado para mejor legibilidad. */
+        font-size: 1.1rem;
+        /* Transición para el efecto focus, suavizando el cambio de estilo al interactuar. */
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        /* Estilo de la fuente. */
+        font-family: "Lato", sans-serif;
+      }
+
+      /* Efecto focus para los campos del formulario */
+      #contacto input:focus,
+      #contacto textarea:focus {
+        /* Borde y sombra al enfocar para indicar interactividad, siguiendo el color acentuado. */
+        border-color: #4a90e2; /* Azul acentuado */
+        box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25); /* Sombra con el azul acentuado */
+        outline: none; /* Elimina el contorno por defecto del navegador */
+      }
+
+      /* Estilos específicos para el textarea */
+      #contacto textarea {
+        /* Altura mínima del textarea, asegurando suficiente espacio para el mensaje. */
+        min-height: 120px;
+        /* Desactiva el redimensionamiento horizontal por parte del usuario, para mantener el diseño. */
+        resize: vertical;
+      }
+
+      /* Estilos para el botón de enviar del formulario */
+      #contacto button {
+        /* Utiliza los estilos del botón primario definidos anteriormente, manteniendo la consistencia del diseño. */
+        align-self: center; /* Centra el botón dentro del flex container del formulario. */
+        margin-top: 1rem; /* Margen superior para separarlo de los campos. */
+      }
+
+      /* Media Queries para responsividad (Módulo 5) */
+      @media (max-width: 768px) {
+        /* En pantallas más pequeñas, ajusta el tamaño del título principal para que se adapte mejor. */
+        .main-header h1 {
+          font-size: 2rem;
+        }
+
+        /* Ajusta el padding del header para pantallas más pequeñas. */
+        .main-header {
+          padding: 1rem 0;
+        }
+
+        /* En la navegación, permite que los ítems se apilen si no caben en una sola línea, mejorando la usabilidad en móviles. */
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        /* Reduce el padding de los enlaces de navegación para un diseño más compacto. */
+        nav ul li a {
+          padding: 0.8rem 1rem;
+        }
+
+        /* Reduce el tamaño del título de sección para pantallas más pequeñas. */
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        /* Reduce el padding de las secciones en dispositivos móviles. */
+        section {
+          padding: 2rem 1rem;
+          margin-bottom: 2rem;
+        }
+
+        /* Ajusta el tamaño del texto principal para mejor legibilidad en pantallas pequeñas. */
+        section p {
+          font-size: 1rem;
+        }
+
+        /* Las tarjetas del portafolio se apilan en pantallas pequeñas, ocupando casi todo el ancho. */
+        .portfolio-item {
+          flex: 1 1 90%; /* Ocupan casi todo el ancho */
+          max-width: 400px; /* Asegura un tamaño máximo razonable */
+        }
+
+        /* El footer también ajusta su padding. */
+        footer {
+          padding: 1.2rem 0;
+        }
+
+        /* Ajusta el tamaño de los iconos sociales para pantallas más pequeñas. */
+        .social-links a {
+          font-size: 1.5rem;
+          margin: 0 0.6rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* Ajustes adicionales para pantallas muy pequeñas, optimizando la visualización. */
+        .main-header h1 {
+          font-size: 1.8rem;
+        }
+
+        nav ul li a {
+          padding: 0.7rem 0.8rem;
+        }
+
+        .section-title {
+          font-size: 1.6rem;
+        }
+
+        .btn-primary {
+          padding: 0.8rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        /* El formulario de contacto reduce su padding en pantallas muy pequeñas. */
+        #contacto form {
+          padding: 1.5rem;
+        }
+      }
+      /* Estilos para el contenedor de citas con los nuevos colores */
+      .quote-container {
+        background-color: #ebf5fb; /* Azul muy claro, profesional */
+        border: 1px solid #d6eaf8; /* Borde azul claro */
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .quote-container h3 {
+        color: #2c3e50; /* Azul oscuro del header */
+      }
+
+      .quote-text {
+        color: #2c3e50; /* Azul oscuro del header */
+        font-size: 1.15rem;
+      }
+
+      .quote-author {
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>Mi Huella Digital: Un Portafolio y Blog Personal</h1>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#sobre-mi">Sobre Mí</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content-wrapper">
+      <section id="inicio">
+        <h2 class="section-title">Sebastian Hernandez Muñoz</h2>
+        <p id="welcomeParagraph">
+          Estudiante de Comercio y Negocios Internacionales y apasionado por el
+          mundo digital. ¡Actualmente estoy aprendiendo a hacer páginas web!
+          ¡Bienvenido a mi espacio personal donde comparto mis proyectos,
+          pensamientos y un poco más sobre mí!
+        </p>
+        <div class="inicio-buttons">
+          <a
+            href="https://drive.google.com/file/d/1etoBM4hZasUExaWQJNZek4tHLdER1OC1/view?usp=drive_link"
+            target="_blank"
+            class="btn-primary"
+          >
+            ¡Conóceme un poco más!
+          </a>
+          <button id="welcomeButton" class="btn-primary">¡Bienvenido!</button>
+        </div>
+        <div id="welcomeImageContainer"></div>
+      </section>
+
+      <section id="sobre-mi">
+        <h2 class="section-title">Sobre Mí</h2>
+        <p>
+          Estudio Comercio y Negocios Internacionales en La Salle. Siempre me ha
+          fascinado cómo el mundo se conecta a través del comercio, y ahora
+          estoy expandiendo mis habilidades aprendiendo a construir la
+          infraestructura digital que lo hace posible. Tengo ligera experiencia
+          en programación y tuve la oportunidad de trabajar en Mercado Libre,
+          donde pude aplicar mis conocimientos en un entorno dinámico. Fuera del
+          ámbito académico y profesional, me apasiona el mundo de los
+          videojuegos, disfruto mucho ir al gimnasio para mantenerme activo y
+          solía practicar fútbol. Además, tengo una inclinación por la música,
+          ¡y sé tocar la batería!
+        </p>
+        <img
+          src="https://mlti.com.mx/wp-content/uploads/2023/11/vista-superior-equipo-juego-300x200.jpg"
+          alt="Setup de videojuegos y tecnología"
+          style="
+            width: 100%;
+            max-width: 300px; /* Imagen más pequeña */
+            height: auto;
+            display: block;
+            margin: 1.5rem auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          "
+        />
+        <p>
+          Fuera del ámbito académico y profesional, disfruto mucho de los
+          deportes. Soy un gran aficionado al fútbol, y mis equipos son los
+          Pumas y el Real Madrid. También sigo de cerca la NBA, la NFL y la MLB,
+          apoyando a los Boston Celtics, los New England Patriots y los Los
+          Angeles Dodgers, respectivamente.
+        </p>
+        <img
+          src="https://s.france24.com/media/display/6aca8d1a-7783-11ea-9cf2-005056bf87d6/w:320/p:16x9/WEB%2005ABR%20DEPORTES%20PORTADA%20FOTO.jpg"
+          alt="Deportes y aficiones"
+          style="
+            width: 100%;
+            max-width: 320px; /* Imagen más pequeña */
+            height: auto;
+            display: block;
+            margin: 1.5rem auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          "
+        />
+        <button id="curiousFactButton" class="btn-primary">
+          ¿Sabías esto sobre mí?
+        </button>
+        <p id="curiousFactParagraph" class="mt-4 text-lg text-gray-800"></p>
+      </section>
+
+      <section id="portafolio">
+        <h2 class="section-title">Mi Portafolio</h2>
+        <p>
+          Aquí te presento algunos de los proyectos en los que he trabajado y
+          que reflejan mis habilidades y pasiones.
+        </p>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_1t-s_Vzwlc3JVxO-Bib8o7gfDxa75-2jyg&s"
+              alt="Imagen de Proyecto El Huerto en la Azotea"
+            />
+            <h4>El Huerto en la Azotea</h4>
+            <p>
+              Mi primer proyecto de página web, donde apliqué conceptos de HTML
+              semántico y estilos CSS responsivos.
+            </p>
+            <a
+              href="https://sebas-hdz-m.github.io/El-Huerto-en-la-Azotea-1/"
+              target="_blank"
+              class="btn-secondary"
+              >Ver Proyecto</a
+            >
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="https://blog.saleslayer.com/hubfs/mercado-libre-logo.jpg"
+              alt="Logo de Mercado Libre"
+            />
+            <h4>Mi Tienda de Mercado Libre</h4>
+            <p>
+              Explora mis productos y ofertas en mi tienda oficial de Mercado
+              Libre.
+            </p>
+            <a
+              href="https://listado.mercadolibre.com.mx/tottal-supplier#D[A:tottal%20supplier]"
+              target="_blank"
+              class="btn-secondary"
+              >Ver Tienda</a
+            >
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="https://hips.hearstapps.com/hmg-prod/images/magic-8-ball-pelicula-terror-blumhouse-1559630062.jpg"
+              alt="Imagen de la Bola Mágica 8"
+              onerror="this.onerror=null;this.src='https://placehold.co/400x220/3498db/FFFFFF?text=Proyecto+Bola+Mágica';"
+            />
+            <h4>Magic 8-Ball</h4>
+            <p>Aplicación de bola mágica 8.</p>
+            <a
+              href="https://8zmd5w-5000.csb.app/"
+              target="_blank"
+              class="btn-secondary"
+              >Ver Proyecto</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto">
+        <h2 class="section-title">Contacto</h2>
+        <img
+          src="https://esemanal.mx/revista/wp-content/uploads/2019/05/Pegaso-Tecnolog%C3%ADa.jpg"
+          alt="Contacto y comunicación"
+          style="
+            width: 100%;
+            max-width: 350px; /* Imagen de contacto más pequeña */
+            height: auto;
+            display: block;
+            margin: 1.5rem auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          "
+        />
+        <p>
+          ¿Tienes una pregunta, una idea para colaborar o simplemente quieres
+          saludar? ¡No dudes en enviarme un mensaje!
+        </p>
+        <form id="contactForm">
+          <label for="name">Nombre:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Tu nombre completo"
+            required
+          />
+
+          <label for="email">Correo Electrónico:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="tu.correo@ejemplo.com"
+            required
+          />
+
+          <label for="message">Mensaje:</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            placeholder="Escribe tu mensaje aquí..."
+            required
+          ></textarea>
+
+          <button type="submit" class="btn-primary">Enviar Mensaje</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="social-links mb-3">
+        <a href="https://www.instagram.com/_sebas.h.m_/" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/sebastian-hernandez-muñoz-5993b421a/"
+          target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/sebas.hernandez.500337"
+          target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://www.tiktok.com/@sebas_hdz_.m" target="_blank"
+          ><i class="fab fa-tiktok"></i
+        ></a>
+      </div>
+      <p>
+        &copy; 2025 Sebastian Hernandez Muñoz. Todos los derechos reservados. |
+        Desarrollado con pasión y código.
+      </p>
+    </footer>
+
+    <script>
+      // SCRIPT PARA EL BOTÓN "Dato Curioso" en la sección "Sobre Mí".
+      // Esta función demuestra la creación dinámica de elementos HTML (Módulo 4).
+      const curiousFactButton = document.getElementById("curiousFactButton");
+      const curiousFactParagraph = document.getElementById(
+        "curiousFactParagraph"
+      );
+
+      // Añade un 'event listener' para detectar clics en el botón.
+      curiousFactButton.addEventListener("click", () => {
+        // Verifica si el párrafo ya contiene texto para evitar duplicados.
+        if (curiousFactParagraph.textContent === "") {
+          // Crea un nuevo elemento de párrafo.
+          const newFact = document.createElement("p");
+          // Asigna el texto al nuevo párrafo.
+          newFact.textContent =
+            "Dato curioso: Además de ser un gran fan de los deportes como el fútbol (con mis equipos Pumas y Real Madrid), la NBA, la NFL y la MLB, también disfruto mucho jugar videojuegos, ir al gimnasio y, ¿sabías que sé tocar la batería?";
+          // Añade el nuevo párrafo al elemento contenedor.
+          curiousFactParagraph.appendChild(newFact);
+          // Deshabilita el botón y cambia su texto para indicar que el dato ya fue revelado.
+          curiousFactButton.disabled = true;
+          curiousFactButton.textContent = "¡Dato revelado!";
+        }
+      });
+
+      // SCRIPT PARA EL BOTÓN "¡Bienvenido!" en la sección "Inicio".
+      // Esta función ahora usa un 'alert()' como se solicitó para la interacción de bienvenida (Módulo 4).
+      const welcomeButton = document.getElementById("welcomeButton");
+      const welcomeImageContainer = document.getElementById(
+        "welcomeImageContainer"
+      );
+
+      welcomeButton.addEventListener("click", () => {
+        // Muestra un mensaje de bienvenida personalizado usando alert().
+        alert("¡Hola! ¡Bienvenido a mi portafolio digital!");
+
+        // Opcional: Si aún quieres mostrar la imagen después del alert, puedes dejar este código.
+        // Si solo quieres el alert, puedes eliminar las siguientes líneas hasta el final de la función.
+        const imageUrl =
+          "https://i.pinimg.com/1200x/da/d0/31/dad0312b7d04cc741c5fadd2eac3e0a6.jpg";
+        const welcomeImage = document.createElement("img");
+        welcomeImage.src = imageUrl;
+        welcomeImage.alt = "Imagen de Bienvenida";
+        welcomeImageContainer.innerHTML = ""; // Limpia cualquier contenido previo
+        welcomeImageContainer.appendChild(welcomeImage);
+      });
+
+      // SCRIPT PARA LA VALIDACIÓN DEL FORMULARIO DE CONTACTO (Módulo 4).
+      // Esta función previene el envío por defecto y valida los campos.
+      const contactForm = document.getElementById("contactForm");
+
+      contactForm.addEventListener("submit", function (event) {
+        // Previene el envío por defecto del formulario para que JavaScript pueda manejar la validación.
+        event.preventDefault();
+
+        // Obtiene los valores de los campos de entrada usando sus IDs.
+        const name = document.getElementById("name").value.trim(); // .trim() elimina espacios en blanco al inicio y final.
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        // Realiza la validación: verifica si los campos requeridos están vacíos.
+        if (name === "" || email === "" || message === "") {
+          // Si algún campo está vacío, muestra un mensaje de error.
+          alert(
+            "¡Ups! Por favor, asegúrate de llenar todos los campos del formulario antes de enviar tu mensaje."
+          );
+        } else {
+          // Si todos los campos están llenos, muestra un mensaje de éxito.
+          alert(
+            "¡Gracias por tu mensaje, " +
+              name +
+              "! Me pondré en contacto contigo pronto."
+          );
+          // Opcional: Puedes resetear el formulario después de un envío exitoso.
+          contactForm.reset();
+          // Aquí iría el código para realmente enviar los datos del formulario (ej. a un servidor).
+        }
+      });
+    </script>
+  </body>
+</html>
